@@ -47,8 +47,10 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public StudentDTO getStudentById(Integer studentId) throws StudentException {
-		// TODO Auto-generated method stub
-		return null;
+		Student student = studentRepository.findById(studentId)
+				.orElseThrow(() -> new StudentException("Student not found with ID: " + studentId));
+
+		return studentUtil.convertToDTO(student);
 	}
 
 	@Override

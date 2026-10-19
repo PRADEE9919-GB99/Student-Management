@@ -41,9 +41,12 @@ public class StudentController {
 		return ResponseEntity.ok(students);
 	}
 
-	public ResponseEntity<StudentDTO> getStudentById(Integer studentId) throws StudentException {
+	@GetMapping("/{studentId}")
+	public ResponseEntity<StudentDTO> getStudentById(@PathVariable Integer studentId) throws StudentException {
 
-		return null;
+		StudentDTO student = studentService.getStudentById(studentId);
+
+		return ResponseEntity.ok(student);
 	}
 
 	public ResponseEntity<List<StudentDTO>> getAllStudents() throws StudentException {
