@@ -68,7 +68,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void updateStudentDetails(Integer studentId,StudentDTO studentDto) throws StudentException {
+	public void updateStudentDetails(Integer studentId, StudentDTO studentDto) throws StudentException {
 		// TODO Auto-generated method stub
 		Student existingStudent = studentRepository.findById(studentId)
 				.orElseThrow(() -> new StudentException("Student not found with ID: " + studentDto.getStudentId()));
@@ -84,7 +84,10 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public void deleteStudent(Integer studentId) throws StudentException {
 		// TODO Auto-generated method stub
+		Student student = studentRepository.findById(studentId)
+				.orElseThrow(() -> new StudentException("Student not found with ID: " + studentId));
 
+		studentRepository.delete(student);
 	}
 
 }
