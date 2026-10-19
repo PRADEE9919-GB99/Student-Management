@@ -49,9 +49,12 @@ public class StudentController {
 		return ResponseEntity.ok(student);
 	}
 
+	@GetMapping
 	public ResponseEntity<List<StudentDTO>> getAllStudents() throws StudentException {
 
-		return null;
+		List<StudentDTO> students = studentService.getAllStudents();
+
+		return ResponseEntity.ok(students);
 	}
 
 	public ResponseEntity<Void> updateStudentDetails(StudentDTO studentDTO) throws StudentException {

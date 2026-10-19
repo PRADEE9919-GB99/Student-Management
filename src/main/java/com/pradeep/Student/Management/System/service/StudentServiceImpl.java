@@ -56,7 +56,15 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public List<StudentDTO> getAllStudents() throws StudentException {
 		// TODO Auto-generated method stub
-		return null;
+		List<Student> students = (List<Student>) studentRepository.findAll();
+
+		List<StudentDTO> studentDTOs = new ArrayList<>();
+
+		for (Student student : students) {
+			studentDTOs.add(studentUtil.convertToDTO(student));
+		}
+
+		return studentDTOs;
 	}
 
 	@Override
