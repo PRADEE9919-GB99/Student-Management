@@ -68,9 +68,17 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public void updateStudentDetails(StudentDTO studentDto) throws StudentException {
+	public void updateStudentDetails(Integer studentId,StudentDTO studentDto) throws StudentException {
 		// TODO Auto-generated method stub
+		Student existingStudent = studentRepository.findById(studentId)
+				.orElseThrow(() -> new StudentException("Student not found with ID: " + studentDto.getStudentId()));
 
+		existingStudent.setStudentName(studentDto.getStudentName());
+		existingStudent.setEmail(studentDto.getEmail());
+		existingStudent.setAge(studentDto.getAge());
+		existingStudent.setGender(studentDto.getGender());
+
+		studentRepository.save(existingStudent);
 	}
 
 	@Override

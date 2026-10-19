@@ -10,6 +10,8 @@ public interface StudentService {
 	public List<StudentDTO> getStudentByName(String name)throws StudentException;
 	public StudentDTO getStudentById(Integer studentId)throws StudentException;
 	public List<StudentDTO> getAllStudents()throws StudentException;
-	public void updateStudentDetails(StudentDTO studentDto)throws StudentException;
+	public void updateStudentDetails(Integer studentId,StudentDTO studentDto)throws StudentException;
 	public void deleteStudent(Integer studentId)throws StudentException;
+//	public void updateDetails(Integer studentId,StudentDTO studentDto)throws StudentException;
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,9 +58,12 @@ public class StudentController {
 		return ResponseEntity.ok(students);
 	}
 
-	public ResponseEntity<Void> updateStudentDetails(StudentDTO studentDTO) throws StudentException {
+	@PutMapping("/{studentId}")
+	public ResponseEntity<Void> updateStudentDetails(@PathVariable Integer studentId,
+			@RequestBody StudentDTO studentDTO) throws StudentException {
+		studentService.updateStudentDetails(studentId, studentDTO);
 
-		return null;
+		return ResponseEntity.noContent().build();
 	}
 
 	public ResponseEntity<Void> deleteStudent(Integer studentId) throws StudentException {
