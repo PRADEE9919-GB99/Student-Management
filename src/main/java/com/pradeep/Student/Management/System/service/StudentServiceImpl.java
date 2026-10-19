@@ -1,5 +1,6 @@
 package com.pradeep.Student.Management.System.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -33,7 +34,15 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public List<StudentDTO> getStudentByName(String name) throws StudentException {
 		// TODO Auto-generated method stub
-		return null;
+		List<Student> students = studentRepository.findByStudentName(name);
+
+		List<StudentDTO> studentDTOs = new ArrayList<>();
+
+		for (Student student : students) {
+			studentDTOs.add(studentUtil.convertToDTO(student));
+		}
+
+		return studentDTOs;
 	}
 
 	@Override

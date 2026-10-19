@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +33,12 @@ public class StudentController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(studentId);
 	}
 
-	public ResponseEntity<StudentDTO> getStudentByName(String name) throws StudentException {
+	@GetMapping("/name/{name}")
+	public ResponseEntity<List<StudentDTO>> getStudentByName(@PathVariable String name) throws StudentException {
 
-		return null;
+		List<StudentDTO> students = studentService.getStudentByName(name);
+
+		return ResponseEntity.ok(students);
 	}
 
 	public ResponseEntity<StudentDTO> getStudentById(Integer studentId) throws StudentException {
