@@ -3,11 +3,14 @@ package com.pradeep.Student.Management.System.api;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.pradeep.Student.Management.System.dto.StudentDTO;
 import com.pradeep.Student.Management.System.exception.StudentException;
 import com.pradeep.Student.Management.System.service.StudentService;
-
+@RestController
+@RequestMapping("/students")
 public class StudentController {
 
 	private StudentService studentService;
